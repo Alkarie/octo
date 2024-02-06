@@ -34,6 +34,10 @@ from octo.utils.train_utils import (
     TrainState,
 )
 
+
+import pdb
+
+
 try:
     from jax_smi import initialise_tracking  # type: ignore
 
@@ -46,12 +50,16 @@ FLAGS = flags.FLAGS
 flags.DEFINE_string("name", "experiment", "Experiment name.")
 flags.DEFINE_bool("debug", False, "Debug config (no wandb logging)")
 
-default_config_file = os.path.join(
-    os.path.dirname(__file__), "configs/finetune_config.py"
-)
+
+# pdb.set_trace()
+default_config_file = os.path.join(os.path.dirname(__file__), "configs\\finetune_config.py")
+
+# pdb.set_trace()
 config_flags.DEFINE_config_file(
     "config",
-    default_config_file,
+    # default_config_file,
+    # "C:/Users/MM276821/Documents/Python/octo/scripts/configs/finetune_config.py",
+    "scripts/configs/finetune_config.py",
     "File path to the training hyperparameter configuration.",
     lock_config=False,
 )

@@ -16,7 +16,7 @@ from octo.model.components.tokenizers import BinTokenizer
 from octo.model.components.transformer import MAPHead
 from octo.utils.typing import PRNGKey
 
-
+import pdb
 class ActionHead(ABC):
     """Action prediction modules that take in the transformer token outputs and predict actions.
 
@@ -107,6 +107,7 @@ def continuous_loss(
         ground_truth_value: continuous values w/ shape (batch_dims...)
         mask: broadcastable to ground_truth
     """
+    pdb.set_trace()
     if loss_type == "mse":
         loss = jnp.square(pred_value - ground_truth_value)
     elif loss_type == "l1":
@@ -114,6 +115,7 @@ def continuous_loss(
     else:
         raise ValueError(f"Invalid loss type: {loss_type}")
 
+    
     loss = masked_mean(loss, mask)
 
     mse = jnp.square(pred_value - ground_truth_value)
